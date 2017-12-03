@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+    <title>demo</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" rel="stylesheet">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <style type="text/css">
+        #debug {
+            display: block;
+            position: absolute;
+            top: 50px;
+            left: 550px;
+            font-size: 20px;
+            color: #c00;
+        }
+    </style>
+</head>
+<body>
+<div class="body-wrap">
+    <div class="player-wrap" id="playerA"></div>
+</div>
+<div id="debug"></div>
+<script src="js/lib.js"></script>
+<script>
+    var playlist = [{
+        title: 'Avicii - Addicted to You',
+        type: 'mp3',
+        src: 'files/1.mp3',
+        thumbnail: 'img/labels/1.jpg'
+    }, {
+        title: 'Calvin Harris - Outside ft. Ellie Goulding',
+        type: 'mp3',
+        src: 'files/2.mp3',
+        thumbnail: 'img/labels/2.jpg'
+    }, {
+        title: 'Deorro - Five Hours (Original Mix)',
+        type: 'mp3',
+        src: 'files/3.mp3',
+        thumbnail: 'img/labels/3.jpg'
+    }];
+    var playerA = new GRPlayer('#playerA', {
+        playlist: playlist,
+        autoplay: true,
+        controls: true
+    })
+</script>
+</body>
+</html>

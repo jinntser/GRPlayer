@@ -1,0 +1,341 @@
+body *, body *:before, body *:after {
+    box-sizing: border-box;
+    cursor: default;
+}
+
+html, body {
+    min-height: 100%;
+    background-color: #000;
+    font-size: 12px;
+}
+
+ul, ol {
+    padding: 0;
+    margin: 0;
+}
+
+.player-wrap {
+    display: block;
+    position: relative;
+    width: 800px;
+    height: 760px;
+    margin: auto;
+    background-color: #666;
+    border-radius: 6px;
+}
+
+.disc-base, .disc, .disc-label, .disc-label:after {
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.disc-base {
+    top: 60px;
+    left: 60px;
+    width: 500px;
+    height: 500px;
+    background-color: #efefef;
+}
+
+.disc {
+    width: 95%;
+    height: 95%;
+    top: 2.5%;
+    left: 2.5%;
+    background-color: #000;
+    cursor: pointer;
+}
+
+.disc-label {
+    width: 35%;
+    height: 35%;
+    top: 32.5%;
+    left: 32.5%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 4px solid #f1f1f1;
+}
+
+    .disc-label:after {
+        width: 5%;
+        height: 5%;
+        top: 47.5%;
+        left: 47.5%;
+        background-color: #efefef;
+        content: '';
+    }
+
+.reader-axle, .reader-axle:before, .reader-axle:after {
+    display: block;
+    position: absolute;
+    background-color: #000;
+    box-shadow: 0 0 2px 2px rgba(150, 150, 150, .4);
+    border: 1px solid #777;
+    border-radius: 50%;
+}
+
+.reader-axle {
+    width: 110px;
+    height: 110px;
+    top: 50px;
+    left: 500px;
+    transform-origin: center center;
+    z-index: 5;
+}
+
+    .reader-axle:before {
+        width: 85%;
+        height: 85%;
+        top: 7.5%;
+        left: 7.5%;
+        content: '';
+    }
+
+    .reader-axle:after {
+        width: 10%;
+        height: 10%;
+        top: 45%;
+        left: 45%;
+        background-color: #efefef;
+        content: '';
+    }
+
+.reader-arm, .reader-arm:before, .reader-arm:after {
+    display: block;
+    position: absolute;
+    left: 50%;
+}
+
+.reader-arm {
+    top: 50%;
+    width: 16px;
+    height: 300px;
+    margin: -40px 0 0 -8px;
+    background-color: #555;
+    box-shadow: 0 0 2px 4px rgba(30, 30, 30, .6) inset;
+    transition: all ease .2s;
+    transform-origin: center 40px;
+}
+
+    .reader-arm:before {
+        top: 0;
+        width: 32px;
+        height: 50px;
+        margin: -50px 0 0 -16px;
+        background-color: #555;
+        box-shadow: 0 0 10px 5px rgba(0, 0, 0, .6) inset;
+        content: '';
+    }
+
+    .reader-arm:after {
+        top: 0;
+        width: 50px;
+        height: 50px;
+        margin: 15px 0 0 -25px;
+        background-color: #1a1a1a;
+        box-shadow: 0 0 2px 3px rgba(150, 150, 150, .3);
+        content: '';
+    }
+
+.reader-reader {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 28px;
+    height: 72px;
+    margin: -10px 0 0 -14px;
+    padding-top: 10px;
+    background-color: #666;
+    box-shadow: 0 0 6px 4px rgba(30, 30, 30, .6) inset;
+    color: #c3c3c3;
+    line-height: 1.5;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.player-info {
+    display: block;
+    position: absolute;
+    width: 400px;
+    height: 60px;
+    top: 615px;
+    left: 90px;
+    border: 1px solid #777;
+    padding: 1em;
+    background-color: #1a1a1a;
+    color: #ccc;
+    border-radius: 6px;
+    line-height: 1.5;
+}
+
+    .player-info .info-title {
+        display: block;
+        position: relative;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .player-info .info-time-current {
+        display: block;
+        position: relative;
+    }
+
+.control-panel {
+    display: block;
+    position: absolute;
+    top: 675px;
+    left: 90px;
+    width: 400px;
+    font-size: 0;
+    text-align: center;
+}
+
+    .control-panel li {
+        display: inline-block;
+        position: relative;
+    }
+
+    .control-panel span {
+        display: block;
+        padding: .5em .5em;
+        min-width: 2.4em;
+        background-color: #000;
+        color: #6e6e6e;
+        font-size: 1.5rem;
+        line-height: 1.2;
+        border-radius: 3px;
+        border: 1px solid #777;
+        cursor: pointer;
+    }
+
+        .control-panel span.active {
+            background-color: #333;
+            color: #fefefe;
+        }
+
+        .control-panel span:hover {
+            color: #fefefe;
+        }
+
+        .control-panel span.pause {
+            animation: pause 2s infinite linear;
+        }
+
+            .control-panel span.play .fa-play,
+            .control-panel span.pause .fa-pause {
+                display: none;
+            }
+
+            .control-panel .fa {
+                pointer-events: none;
+            }
+
+.knob-wrap {
+    display: inline-block;
+    position: relative;
+    margin: 0 10px 10px;
+    text-align: center;
+}
+
+.knob-label {
+    margin-top: .8em;
+}
+
+.knob {
+    display: block;
+    position: relative;
+    background-color: #1a1a1a;
+    box-shadow: 0 0 2px 3px rgba(150, 150, 150, .4);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+    .knob:after {
+        display: block;
+        position: absolute;
+        width: 8%;
+        height: 8%;
+        top: 10%;
+        left: 50%;
+        background-color: #efefef;
+        border-radius: 50%;
+        transform: translateX(-50%);
+        content: '';
+    }
+
+.knob-lg {
+    width: 100px;
+    height: 100px;
+}
+
+.knob-md {
+    width: 70px;
+    height: 70px;
+}
+
+.knob-sm {
+    width: 40px;
+    height: 40px;
+}
+
+.amp {
+    display: block;
+    position: absolute;
+    top: 537px;
+    left: 500px;
+    width: 230px;
+    height: 180px;
+    padding: 20px 10px 0;
+    border: 1px solid #777;
+    background-color: #1a1a1a;
+    color: #ccc;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.eq-low, .eq-high, .volume {
+    display: block;
+    position: absolute;
+}
+
+.eq-low {
+    top: 100px;
+    left: 20px;
+}
+
+.eq-high {
+    top: 20px;
+    left: 20px;
+}
+
+.volume {
+    top: 40px;
+    left: 90px;
+}
+
+@keyframes pause {
+    0% {
+        background-color: #000;
+        color: #a5a5a5;
+    }
+
+    45% {
+        background-color: #4a4a4a;
+        color: #fefefe;
+    }
+
+    55% {
+        background-color: #4a4a4a;
+        color: #fefefe;
+    }
+
+    100% {
+        background-color: #000;
+        color: #a5a5a5;
+    }
+}
