@@ -19,7 +19,6 @@ ul, ol {
     position: relative;
     width: 800px;
     height: 760px;
-    margin: auto;
     background-color: #666;
     border-radius: 6px;
 }
