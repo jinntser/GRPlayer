@@ -49,9 +49,9 @@
                         document.querySelector(target + ' .control-panel span[data-action="play-toggle"]').className = 'play';
                     }
                     if (player.infobox) {
-                        setTimeout(function () {
-                            document.querySelector(target + ' .player-info .info-title').innerHTML = player.playlist[player.currentPlay - 1].title + ' (' + Math.floor(audio.duration / 60) + ':' + ((audio.duration % 60) < 10 ? ('0' + Math.floor(audio.duration % 60)) : Math.floor(audio.duration % 60)) + ')';
-                        }, 100);
+                        audio.onplaying = function () {
+                            document.querySelector(target + ' .player-info .info-title').innerHTML = player.playlist[player.currentPlay - 1].title + ' (' + Math.floor(player.duration / 60) + ':' + ((player.duration % 60) < 10 ? ('0' + Math.floor(player.duration % 60)) : Math.floor(player.duration % 60)) + ')';
+                        };
                     }
                 }
             },
