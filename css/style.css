@@ -83,6 +83,7 @@ ul, ol {
     left: 500px;
     transform-origin: center center;
     z-index: 5;
+    transition: transform ease .12s;
 }
 
     .reader-axle:before {
