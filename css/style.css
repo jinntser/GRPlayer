@@ -21,6 +21,7 @@ ul, ol {
     height: 760px;
     background-color: #666;
     border-radius: 6px;
+    margin: auto;
 }
 
 .disc-base, .disc, .disc-label, .disc-label:after {
@@ -45,6 +46,7 @@ ul, ol {
     left: 2.5%;
     background-color: #000;
     cursor: pointer;
+    pointer-events: none;
 }
 
 .disc-label {

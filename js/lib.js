@@ -376,16 +376,23 @@
 
         _init();
 
-        document.querySelector(target + ' .disc').onmousedown = function (e) {
+        var _disc = document.querySelector(target + ' .disc-base');
+        if('createTouches' in document) {
+            _disc.addEventListener('touchstart', _discDown, false);
+        } else {
+            _disc.addEventListener('mousedown', _discDown, false);
+        }
+
+        function _discDown (e) {
             if (axleCoord.x == 0 && axleCoord.y == 0) {
                 axleCoord = {
-                    x: this.offsetLeft + (this.offsetWidth / 2),
-                    y: this.offsetTop + (this.offsetHeight / 2)
+                    x: this.offsetWidth / 2,
+                    y: this.offsetHeight / 2
                 };
             }
             var dis = {
-                x: e.pageX - axleCoord.x,
-                y: e.pageY - axleCoord.y
+                x: e.layerX - axleCoord.x,
+                y: e.layerY - axleCoord.y
             };
 
             rotateAngleStart = getCurrentAngle(dis.x, dis.y, Math.sqrt(dis.x * dis.x + dis.y * dis.y));
@@ -396,14 +403,19 @@
                 audio.pause();
             }
 
-            document.addEventListener('mousemove', discSpin, false);
-            document.addEventListener('mouseup', removeSpinEvent, false);
-        };
+            if('createTouches' in document) {
+                _disc.addEventListener('touchmove', discSpin, false);
+                _disc.addEventListener('touchend', removeSpinEvent, false);
+            } else {
+                _disc.addEventListener('mousemove', discSpin, false);
+                _disc.addEventListener('mouseup', removeSpinEvent, false);
+            }
+        }
 
         function discSpin(e) {
             var dis = {
-                x: e.pageX - axleCoord.x,
-                y: e.pageY - axleCoord.y
+                x: e.layerX - axleCoord.x,
+                y: e.layerY - axleCoord.y
             };
 
             rotateAngle = getCurrentAngle(dis.x, dis.y, Math.sqrt(dis.x * dis.x + dis.y * dis.y));
@@ -450,8 +462,13 @@
         }
 
         function removeSpinEvent() {
-            document.removeEventListener('mousemove', discSpin, false);
-            document.removeEventListener('mouseup', removeSpinEvent, false);
+            if('createTouches' in document) {
+                _disc.removeEventListener('touchmove', discSpin, false);
+                _disc.removeEventListener('touchend', removeSpinEvent, false);
+            } else {
+                _disc.removeEventListener('mousemove', discSpin, false);
+                _disc.removeEventListener('mouseup', removeSpinEvent, false);
+            }
             currentAngle = angleTemp;
             if (audio.paused) {
                 audio.play();
